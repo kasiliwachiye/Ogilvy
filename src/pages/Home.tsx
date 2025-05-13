@@ -7,6 +7,7 @@ import House1 from "../assets/house.png";
 import ZeroCarbonHousing from "../assets/zero-carbon-housing.png";
 import CircularEconomies from "../assets/circular-economies.png";
 import HouseDesignThumbnail from "../assets/house-design.png";
+import BenefitsBg from "../assets/wooden.png";
 
 type Slide = { title: string; body: string; img: string };
 
@@ -29,6 +30,12 @@ const SLIDES: Slide[] = [
 ];
 
 const AUTO_MS = 3000;
+
+const benefits = [
+  "The iRise housing structure can be mass-manufactured affordably.",
+  "The house is portable to maintain resale value and make the house financially viable.",
+  "The houses can be easily and quickly assembled on-site by inexperienced women and youth.",
+];
 
 const Home: React.FC = () => {
   const [active, setActive] = useState(0);
@@ -162,10 +169,7 @@ const Home: React.FC = () => {
               loading="lazy"
               className="w-full h-auto object-cover max-h-64 sm:max-h-80 md:max-h-[560px]"
             />
-            <div
-              className="absolute inset-0"
-              aria-hidden="true"
-            />
+            <div className="absolute inset-0" aria-hidden="true" />
             <button
               type="button"
               aria-label="Play house design video"
@@ -191,6 +195,42 @@ const Home: React.FC = () => {
               environmental impact associated with traditional residential
               construction. This is how we envision your safe haven.
             </p>
+          </div>
+        </div>
+      </section>
+      <section
+        id="benefits"
+        className="py-20"
+        style={{ backgroundImage: `url(${BenefitsBg})` }}
+      >
+        <div
+          className="container mx-auto max-w-7xl px-8 md:px-10 lg:px-40 bg-black bg-cover bg-center relative"
+          style={{ backgroundImage: `url(${BenefitsBg})` }}
+        >
+          <div className="absolute inset-0 bg-black/60" />
+
+          <div className="relative z-10 text-center text-white py-16">
+            <h2 className="text-4xl md:text-5xl font-semibold uppercase text-[#FEF2E9]">
+              BENEFITS
+            </h2>
+            <p className="mt-4 mx-auto max-w-full text-lg leading-relaxed">
+              The iRise houses are affordable, simple-to-build with sustainable
+              wood and powered by renewable solar energy. In addition, they come
+              with the following benefits:
+            </p>
+
+            <div className="m-12 grid grid-cols-1 md:grid-cols-3 gap-8">
+              {benefits.map((desc, idx) => (
+                <div key={idx} className="relative border border-white/30 p-8">
+                  <span className="absolute -top-5 -left-4 bg-black px-2">
+                    <span className="text-2xl md:text-4xl font-bold text-[#FEF2E9]">
+                      {`0${idx + 1}`}
+                    </span>
+                  </span>
+                  <p className="leading-relaxed font-thin text-start">{desc}</p>
+                </div>
+              ))}
+            </div>
           </div>
         </div>
       </section>
