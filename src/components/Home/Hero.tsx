@@ -16,7 +16,6 @@ const Hero: React.FC = () => {
     center: { opacity: 1, x: 0, transition: { duration: 0.6 } },
     exit: (dir: number) => ({ opacity: 0, x: dir > 0 ? -60 : 60 }),
   };
-
   const dir = 1;
 
   return (
@@ -27,9 +26,10 @@ const Hero: React.FC = () => {
         className="absolute inset-0 -z-20 h-full w-full object-cover"
       />
       <div className="absolute inset-0 -z-10 bg-green-900/40 mix-blend-multiply" />
+
       <div className="container relative z-10 mx-auto flex h-full flex-col justify-between px-6 py-10">
-        <div className="flex flex-1 flex-col items-start justify-center gap-10 md:flex-row md:items-center">
-          <div className="sm:max-w-none lg:max-w-lg">
+        <div className="flex flex-1 flex-col mt-10 items-start justify-center gap-10 lg:flex-row lg:items-center">
+          <div className="sm:max-w-none lg:max-w-lg  mt-16 md:mt-10 lg:mt-0">
             <AnimatePresence mode="wait" custom={dir}>
               <motion.h1
                 key={slides[active].title}
@@ -38,11 +38,12 @@ const Hero: React.FC = () => {
                 animate="center"
                 exit="exit"
                 custom={dir}
-                className="whitespace-pre-wrap text-5xl font-semibold leading-[0.95] tracking-wide md:text-6xl"
+                className="whitespace-pre-wrap text-5xl font-semibold leading-[0.95] tracking-wide lg:text-6xl"
               >
                 {slides[active].title}
               </motion.h1>
             </AnimatePresence>
+
             <AnimatePresence mode="wait" custom={dir}>
               <motion.p
                 key={slides[active].body}
@@ -56,6 +57,7 @@ const Hero: React.FC = () => {
                 {slides[active].body}
               </motion.p>
             </AnimatePresence>
+
             <div className="mt-10 flex items-center gap-3">
               {slides.map((_, idx) => (
                 <button
@@ -69,7 +71,8 @@ const Hero: React.FC = () => {
               ))}
             </div>
           </div>
-          <div className="relative mt-10 flex flex-1 items-center justify-center overflow-x-hidden">
+
+          <div className="relative flex flex-1 items-center justify-center overflow-x-hidden">
             <AnimatePresence mode="wait" custom={dir}>
               <motion.img
                 key={slides[active].img}
@@ -81,11 +84,12 @@ const Hero: React.FC = () => {
                 animate="center"
                 exit="exit"
                 custom={dir}
-                className="max-h-[60vh] md:max-h-[560px] w-auto drop-shadow-2xl"
+                className="max-h-[60vh] lg:max-h-[560px] w-auto drop-shadow-2xl"
               />
             </AnimatePresence>
           </div>
         </div>
+
         <div className="mb-4 flex items-center justify-between text-xs">
           <a
             href="/projects"
@@ -94,12 +98,14 @@ const Hero: React.FC = () => {
             ON GOING PROJECTS
             <FiArrowRight className="transition group-hover:translate-x-1" />
           </a>
+
           <div className="flex flex-col items-center gap-1">
             <span className="text-xs font-extralight tracking-wide text-gray-100">
               Scroll to Explore
             </span>
             <FiArrowDown className="animate-bounce text-xl" />
           </div>
+
           <a
             href="/partners"
             className="group inline-flex items-center gap-2 font-extralight tracking-wide"
