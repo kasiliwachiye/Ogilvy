@@ -1,11 +1,18 @@
-import React from 'react'
+import React from "react";
+import Hero from "../components/SustainableLiving/Hero";
+import About from "../components/SustainableLiving/About";
+import ProductIntro from "../components/SustainableLiving/ProductIntro";
+import FeatureCarousel from "../components/SustainableLiving/FeatureCarousel";
+import Partners from "../components/Shared/Partners";
 
-function SustainableLiving() {
-  return (
-    <div>
-      
-    </div>
-  )
-}
+const SustainableLiving: React.FC = () => (
+  <>
+    <Hero />
+    <About />
+    <ProductIntro />
+    <FeatureCarousel />
+    <Partners />
+  </>
+);
 
-export default SustainableLiving
+export default SustainableLiving;

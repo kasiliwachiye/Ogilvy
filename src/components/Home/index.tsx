@@ -3,8 +3,8 @@ import Hero from "./Hero";
 import HouseDesign from "./HouseDesign";
 import Benefits from "./Benefits";
 import Pathway from "./Pathway";
-import Partners from "./Partners";
 import Projects from "./Projects";
+import Partners from "../Shared/Partners";
 
 const Home: React.FC = () => (
   <>
@@ -12,8 +12,8 @@ const Home: React.FC = () => (
     <HouseDesign />
     <Benefits />
     <Pathway />
-    <Projects />
     <Partners />
+    <Projects />
   </>
 );
 
