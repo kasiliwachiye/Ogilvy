@@ -6,6 +6,7 @@ import SustainableLiving from "./pages/SustainableLiving";
 import Contact from "./pages/Contact";
 import OurStory from "./pages/OurStory";
 import NotFound from "./pages/NotFound";
+import Footer from "./components/Footer";
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
         <Route path="/contact" element={<Contact />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
+      <Footer />
     </BrowserRouter>
   );
 }

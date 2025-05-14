@@ -20,11 +20,11 @@ export default function Footer() {
           <div className="uppercase">
             <h3 className="text-lg font-semibold mb-4 uppercase">Home</h3>
             <ul className="space-y-2 text-sm font-extralight">
-              <li>Our Vision / Promise</li>
-              <li>Benefits</li>
-              <li>Pathway</li>
-              <li>Ongoing Projects</li>
-              <li>Partners</li>
+              <li> • Our Vision / Promise</li>
+              <li> • Benefits</li>
+              <li> • Pathway</li>
+              <li> • Ongoing Projects</li>
+              <li> • Partners</li>
             </ul>
           </div>
 
@@ -33,26 +33,26 @@ export default function Footer() {
               Sustainable Living
             </h3>
             <ul className="space-y-2 text-sm font-extralight">
-              <li>About Sustainable Living</li>
-              <li>Product Introduction</li>
+              <li> • About Sustainable Living</li>
+              <li> • Product Introduction</li>
             </ul>
           </div>
 
           <div className="uppercase">
             <h3 className="text-lg font-semibold mb-4 uppercase">Our Story</h3>
             <ul className="space-y-2 text-sm font-extralight">
-              <li>What We Do</li>
-              <li>Who We Are</li>
-              <li>Our Partners</li>
-              <li>News Updates</li>
+              <li> • What We Do</li>
+              <li> • Who We Are</li>
+              <li> • Our Partners</li>
+              <li> • News Updates</li>
             </ul>
           </div>
 
           <div className="uppercase">
             <h3 className="text-lg font-semibold mb-4 uppercase">Contact Us</h3>
             <ul className="space-y-2 text-sm mb-6 font-extralight">
-              <li>Regional Contact Us</li>
-              <li>Contact Us Form</li>
+              <li> • Regional Contact Us</li>
+              <li> • Contact Us Form</li>
             </ul>
 
             <div className="border border-white/40 p-6 flex gap-4 items-start text-sm">
