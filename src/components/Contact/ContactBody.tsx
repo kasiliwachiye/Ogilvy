@@ -45,53 +45,61 @@ const ContactBody = () => {
   });
 
   return (
-    <section className="my-24 px-8">
-      <div className="max-w-[1320px] bg-[#FBEADC] mx-auto grid grid-cols-1 md:grid-cols-[1fr_2fr]">
-        <div className="bg-[#165620] text-white text-base font-light py-12">
-          <div className="max-w-xs mx-auto">
+    <section className="my-24 px-4 sm:px-6 lg:px-8">
+      <div className="max-w-[1320px] bg-[#FBEADC] mx-auto grid grid-cols-1 md:grid-cols-[1fr_2fr] gap-8">
+        <div className="bg-[#165620] text-white font-light py-12 px-4 sm:px-6 md:px-12">
+          <div className="mx-auto max-w-full sm:max-w-xs">
             <h2 className="text-2xl font-bold mb-4">Regional Contacts</h2>
             <ul className="space-y-6">
-              <li className="grid grid-cols-[auto_1fr] gap-4">
-                <div>
-                  <GrLocation className="mt-1" />
-                </div>
-                <div className="flex flex-col gap-2">
-                  <h3 className="font-bold">America</h3>
-                  <p>Future Earth, Suite 380</p>
-                  <p>1839 S Alma School Rd</p>
-                  <p>Mesa, AZ 85210 USA</p>
-                  <p>480 649 4127</p>
-                </div>
-              </li>
-              <li className="grid grid-cols-[auto_1fr] gap-4">
-                <div>
-                  <GrLocation className="mt-1" />
-                </div>
-                <div className="flex flex-col gap-2">
-                  <h3 className="font-bold">Mexico, South America</h3>
-                  <p>Place: Gracious Rd, T Buiding, 3rd Floor</p>
-                  <p>Email: jambo@futureearth1.com</p>
-                  <p>Phone: +33 345 678 123</p>
-                </div>
-              </li>
-              <li className="grid grid-cols-[auto_1fr] gap-4">
-                <div>
-                  <GrLocation className="mt-1" />
-                </div>
-                <div className="flex flex-col gap-2">
-                  <h3 className="font-bold">Malawi, Africa</h3>
-                  <p>Place: Gracious Rd, T Buiding, 3rd Floor</p>
-                  <p>Email: jambo@futureearth1.com</p>
-                  <p>Phone: +33 345 678 123</p>
-                </div>
-              </li>
+              {[
+                {
+                  title: "America",
+                  lines: [
+                    "Future Earth, Suite 380",
+                    "1839 S Alma School Rd",
+                    "Mesa, AZ 85210 USA",
+                    "480 649 4127",
+                  ],
+                },
+                {
+                  title: "Mexico, South America",
+                  lines: [
+                    "Place: Gracious Rd, T Buiding, 3rd Floor",
+                    "Email: jambo@futureearth1.com",
+                    "Phone: +33 345 678 123",
+                  ],
+                },
+                {
+                  title: "Malawi, Africa",
+                  lines: [
+                    "Place: Gracious Rd, T Buiding, 3rd Floor",
+                    "Email: jambo@futureearth1.com",
+                    "Phone: +33 345 678 123",
+                  ],
+                },
+              ].map((c, i) => (
+                <li
+                  key={i}
+                  className="grid grid-cols-[auto_1fr] gap-4 items-start"
+                >
+                  <div>
+                    <GrLocation className="mt-1 text-xl" />
+                  </div>
+                  <div className="flex flex-col gap-2">
+                    <h3 className="font-bold">{c.title}</h3>
+                    {c.lines.map((line, idx) => (
+                      <p key={idx}>{line}</p>
+                    ))}
+                  </div>
+                </li>
+              ))}
             </ul>
           </div>
         </div>
 
         <form
           onSubmit={formik.handleSubmit}
-          className="flex flex-col gap-4 max-w-2xl mx-auto py-12 text-base"
+          className="flex flex-col gap-4 max-w-full sm:max-w-2xl mx-auto py-12 text-base px-4 sm:px-6 md:px-0"
         >
           <h2 className="text-2xl font-bold mb-4">Talk to Us</h2>
 
@@ -101,65 +109,37 @@ const ContactBody = () => {
             </div>
           )}
 
-          <div className="flex flex-col gap-1">
-            <input
-              className={`p-2 px-4 bg-transparent border ${
-                formik.touched.full_name && formik.errors.full_name
-                  ? "border-red-500"
-                  : "border-[#165620]"
-              } text-[#165620] placeholder:text-[#444] placeholder:opacity-75 focus:outline-none focus:border-black focus:ring-0 w-full`}
-              type="text"
-              name="full_name"
-              id="full_name"
-              placeholder="Full name"
-              value={formik.values.full_name}
-              onChange={formik.handleChange}
-              onBlur={formik.handleBlur}
-            />
-            {formik.touched.full_name && formik.errors.full_name && (
-              <p className="text-red-500 text-sm">{formik.errors.full_name}</p>
-            )}
-          </div>
-
-          <div className="flex flex-col gap-1">
-            <input
-              className={`p-2 px-4 bg-transparent border ${
-                formik.touched.email && formik.errors.email
-                  ? "border-red-500"
-                  : "border-[#165620]"
-              } text-[#165620] placeholder:text-[#444] placeholder:opacity-75 focus:outline-none focus:border-black focus:ring-0 w-full`}
-              type="email"
-              name="email"
-              id="email"
-              placeholder="Email address"
-              value={formik.values.email}
-              onChange={formik.handleChange}
-              onBlur={formik.handleBlur}
-            />
-            {formik.touched.email && formik.errors.email && (
-              <p className="text-red-500 text-sm">{formik.errors.email}</p>
-            )}
-          </div>
-
-          <div className="flex flex-col gap-1">
-            <input
-              className={`p-2 px-4 bg-transparent border ${
-                formik.touched.phone && formik.errors.phone
-                  ? "border-red-500"
-                  : "border-[#165620]"
-              } text-[#165620] placeholder:text-[#444] placeholder:opacity-75 focus:outline-none focus:border-black focus:ring-0 w-full`}
-              type="text"
-              name="phone"
-              id="phone"
-              placeholder="Phone Number"
-              value={formik.values.phone}
-              onChange={formik.handleChange}
-              onBlur={formik.handleBlur}
-            />
-            {formik.touched.phone && formik.errors.phone && (
-              <p className="text-red-500 text-sm">{formik.errors.phone}</p>
-            )}
-          </div>
+          {([
+            { name: "full_name", type: "text", placeholder: "Full name" },
+            { name: "email", type: "email", placeholder: "Email address" },
+            {
+              name: "phone",
+              type: "text",
+              placeholder: "Phone Number (254 728 000 000)",
+            },
+          ] as const).map((field) => (
+            <div key={field.name} className="flex flex-col gap-1">
+              <input
+                className={`p-2 px-4 bg-transparent border ${
+                  formik.touched[field.name as keyof typeof formik.touched] && formik.errors[field.name as keyof typeof formik.errors]
+                    ? "border-red-500"
+                    : "border-[#165620]"
+                } text-[#165620] placeholder:text-[#444] placeholder:opacity-75 focus:outline-none focus:border-black focus:ring-0 w-full`}
+                type={field.type}
+                name={field.name}
+                id={field.name}
+                placeholder={field.placeholder}
+                value={formik.values[field.name as keyof typeof formik.values]}
+                onChange={formik.handleChange}
+                onBlur={formik.handleBlur}
+              />
+              {formik.touched[field.name as keyof typeof formik.touched] && formik.errors[field.name as keyof typeof formik.errors] && (
+                <p className="text-red-500 text-sm">
+                  {formik.errors[field.name as keyof typeof formik.errors]}
+                </p>
+              )}
+            </div>
+          ))}
 
           <div className="flex flex-col gap-1">
             <input
@@ -180,26 +160,24 @@ const ContactBody = () => {
                 formik.touched.message && formik.errors.message
                   ? "border-red-500"
                   : "border-[#165620]"
-              } text-[#165620] placeholder:text-[#444] placeholder-opacity-75 focus:outline-none focus:border-black focus:ring-0 w-full`}
+              } text-[#165620] placeholder:text-[#444] placeholder:opacity-75 focus:outline-none focus:border-black focus:ring-0 w-full`}
               name="message"
               id="message"
-              cols={30}
               rows={4}
               placeholder="Message"
               value={formik.values.message}
               onChange={formik.handleChange}
               onBlur={formik.handleBlur}
-            ></textarea>
+            />
             {formik.touched.message && formik.errors.message && (
               <p className="text-red-500 text-sm">{formik.errors.message}</p>
             )}
           </div>
 
-          <div className="border border-[#165620] placeholder:text-[#444]">
+          <div className="border border-[#165620]">
             <h3 className="bg-[#165620] text-white p-2 px-4">CAPTCHA</h3>
-
             <div className="p-4">
-              <p className="flex flex-col gap-4 py-2 opacity-75">
+              <p className="flex flex-col gap-2 py-2 opacity-75">
                 <span>
                   This question is for testing whether or not you are a human
                   visitor and to prevent automated spam submissions.
@@ -216,7 +194,7 @@ const ContactBody = () => {
                     formik.touched.captcha && formik.errors.captcha
                       ? "border-red-500"
                       : "border-[#165620]"
-                  } text-[#165620] placeholder:text-[#444] placeholder-opacity-75 focus:outline-none focus:border-black focus:ring-0 w-full`}
+                  } text-[#165620] placeholder:text-[#444] placeholder:opacity-75 focus:outline-none focus:border-black focus:ring-0 w-full`}
                   type="text"
                   name="captcha"
                   id="captcha"
@@ -237,7 +215,7 @@ const ContactBody = () => {
 
           <button
             type="submit"
-            className="max-w-48 self-end bg-[#165620] uppercase text-white flex gap-2 items-center justify-center py-4 px-8 cursor-pointer"
+            className="max-w-48 self-end bg-[#165620] uppercase text-white flex gap-2 items-center justify-center py-4 px-8"
           >
             <p>Send</p>
             <FiArrowRight />
