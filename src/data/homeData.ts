@@ -5,6 +5,7 @@ import Partner1 from "../assets/partner-1.png";
 import Partner2 from "../assets/partner-2.png";
 import Partner3 from "../assets/partner-3.png";
 import Partner4 from "../assets/partner-4.png";
+import Partner5 from "../assets/partner-5.png";
 
 export type Slide = {
   title: string;
@@ -30,7 +31,7 @@ export const slides: Slide[] = [
   },
 ];
 
-export const partners: string[] = [Partner1, Partner2, Partner3, Partner4];
+export const partners: string[] = [Partner1, Partner2, Partner3, Partner4, Partner5];
 
 export const benefits: string[] = [
   "The iRise housing structure can be mass-manufactured affordably.",

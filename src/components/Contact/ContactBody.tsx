@@ -11,6 +11,7 @@ const ContactBody = () => {
     initialValues: {
       full_name: "",
       email: "",
+      phone: "",
       subject: "",
       message: "",
       captcha: "",
@@ -20,6 +21,12 @@ const ContactBody = () => {
       email: Yup.string()
         .email("Please enter a valid email address")
         .required("Email is required"),
+      phone: Yup.string()
+        .matches(
+          /^254\s\d{3}\s\d{3}\s\d{3}$/,
+          "Please enter a valid Kenyan phone number (254 728 000 000)"
+        )
+        .required("Phone number is required"),
       subject: Yup.string(),
       message: Yup.string()
         .required("Message is required")
@@ -28,7 +35,7 @@ const ContactBody = () => {
         .required("Please solve the CAPTCHA")
         .oneOf(["17"], "Incorrect answer"),
     }),
-    onSubmit: (values, { resetForm }) => {
+    onSubmit: (_values, { resetForm }) => {
       resetForm();
       setSubmitSuccess(true);
       setTimeout(() => {
@@ -38,15 +45,15 @@ const ContactBody = () => {
   });
 
   return (
-    <section className="my-24 px-4 sm:px-8">
-      <div className="max-w-[1320px] bg-[#FBEADC] mx-auto grid grid-cols-1 md:grid-cols-[1fr_2fr] gap-8">
-        <div className="bg-[#165620] text-white text-base font-light py-12 px-4 sm:px-6 md:px-12">
-          <div className="mx-auto max-w-full sm:max-w-xs">
+    <section className="my-24 px-8">
+      <div className="max-w-[1320px] bg-[#FBEADC] mx-auto grid grid-cols-1 md:grid-cols-[1fr_2fr]">
+        <div className="bg-[#165620] text-white text-base font-light py-12">
+          <div className="max-w-xs mx-auto">
             <h2 className="text-2xl font-bold mb-4">Regional Contacts</h2>
             <ul className="space-y-6">
-              <li className="grid grid-cols-[auto_1fr] gap-4 items-start">
+              <li className="grid grid-cols-[auto_1fr] gap-4">
                 <div>
-                  <GrLocation />
+                  <GrLocation className="mt-1" />
                 </div>
                 <div className="flex flex-col gap-2">
                   <h3 className="font-bold">America</h3>
@@ -56,9 +63,9 @@ const ContactBody = () => {
                   <p>480 649 4127</p>
                 </div>
               </li>
-              <li className="grid grid-cols-[auto_1fr] gap-4 items-start">
+              <li className="grid grid-cols-[auto_1fr] gap-4">
                 <div>
-                  <GrLocation />
+                  <GrLocation className="mt-1" />
                 </div>
                 <div className="flex flex-col gap-2">
                   <h3 className="font-bold">Mexico, South America</h3>
@@ -67,9 +74,9 @@ const ContactBody = () => {
                   <p>Phone: +33 345 678 123</p>
                 </div>
               </li>
-              <li className="grid grid-cols-[auto_1fr] gap-4 items-start">
+              <li className="grid grid-cols-[auto_1fr] gap-4">
                 <div>
-                  <GrLocation />
+                  <GrLocation className="mt-1" />
                 </div>
                 <div className="flex flex-col gap-2">
                   <h3 className="font-bold">Malawi, Africa</h3>
@@ -84,7 +91,7 @@ const ContactBody = () => {
 
         <form
           onSubmit={formik.handleSubmit}
-          className="flex flex-col gap-4 max-w-full sm:max-w-2xl mx-auto py-12 text-base px-4"
+          className="flex flex-col gap-4 max-w-2xl mx-auto py-12 text-base"
         >
           <h2 className="text-2xl font-bold mb-4">Talk to Us</h2>
 
@@ -136,6 +143,26 @@ const ContactBody = () => {
 
           <div className="flex flex-col gap-1">
             <input
+              className={`p-2 px-4 bg-transparent border ${
+                formik.touched.phone && formik.errors.phone
+                  ? "border-red-500"
+                  : "border-[#165620]"
+              } text-[#165620] placeholder:text-[#444] placeholder:opacity-75 focus:outline-none focus:border-black focus:ring-0 w-full`}
+              type="text"
+              name="phone"
+              id="phone"
+              placeholder="Phone Number"
+              value={formik.values.phone}
+              onChange={formik.handleChange}
+              onBlur={formik.handleBlur}
+            />
+            {formik.touched.phone && formik.errors.phone && (
+              <p className="text-red-500 text-sm">{formik.errors.phone}</p>
+            )}
+          </div>
+
+          <div className="flex flex-col gap-1">
+            <input
               className="p-2 px-4 bg-transparent border border-[#165620] text-[#165620] placeholder:text-[#444] placeholder:opacity-75 focus:outline-none focus:border-black focus:ring-0 w-full"
               type="text"
               name="subject"
@@ -168,7 +195,7 @@ const ContactBody = () => {
             )}
           </div>
 
-          <div className="border border-[#165620]">
+          <div className="border border-[#165620] placeholder:text-[#444]">
             <h3 className="bg-[#165620] text-white p-2 px-4">CAPTCHA</h3>
 
             <div className="p-4">
@@ -210,7 +237,7 @@ const ContactBody = () => {
 
           <button
             type="submit"
-            className="max-w-48 self-end bg-[#165620] uppercase text-white flex gap-2 items-center justify-center py-4 px-8 cursor-pointer hover:bg-[#0f3b0c] transition duration-300 ease-in-out"
+            className="max-w-48 self-end bg-[#165620] uppercase text-white flex gap-2 items-center justify-center py-4 px-8 cursor-pointer"
           >
             <p>Send</p>
             <FiArrowRight />

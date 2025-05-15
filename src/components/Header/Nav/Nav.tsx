@@ -16,36 +16,42 @@ const menu: Category[] = [
   {
     title: "Home",
     links: [
-      { title: "Our Vision / Promise", href: "/vision" },
-      { title: "Benefits", href: "/benefits" },
-      { title: "Pathway", href: "/pathway" },
-      { title: "Ongoing Projects", href: "/projects" },
-      { title: "Partners", href: "/partners" },
+      { title: "Our Vision / Promise", href: "/#vision" },
+      { title: "Benefits", href: "/#benefits" },
+      { title: "Pathway", href: "/#pathway" },
+      { title: "Ongoing Projects", href: "/#projects" },
+      { title: "Partners", href: "/#partners" },
     ],
   },
   {
     title: "Sustainable Living",
     links: [
-      { title: "About Sustainable Living", href: "/sustainable-living/#about-sustainable" },
-      { title: "Product Introduction", href: "/sustainable-living/#product-intro" },
+      {
+        title: "About Sustainable Living",
+        href: "/sustainable-living/#about-sustainable",
+      },
+      {
+        title: "Product Introduction",
+        href: "/sustainable-living/#product-intro",
+      },
     ],
   },
   {
     title: "Our Story",
     links: [
-      { title: "What We Do", href: "/story/what-we-do" },
-      { title: "Who We Are", href: "/story/who-we-are" },
-      { title: "Our Team", href: "/story/team" },
-      { title: "Advisory Board", href: "/story/advisory-board" },
-      { title: "Our Partners", href: "/story/partners" },
-      { title: "News Updates", href: "/story/news" },
+      { title: "What We Do", href: "/our-story/#what-we-do" },
+      { title: "Who We Are", href: "/our-story/#who-we-are" },
+      { title: "Our Team", href: "/our-story/#team" },
+      { title: "Advisory Board", href: "/our-story/#advisory-board" },
+      { title: "Our Partners", href: "/our-story/#partners" },
+      { title: "News Updates", href: "/our-story/#news" },
     ],
   },
   {
     title: "Contact Us",
     links: [
-      { title: "Regional Contact Us", href: "/contact/regions" },
-      { title: "Contact Us Form", href: "/contact/form" },
+      { title: "Regional Contact Us", href: "/contact-us/#regions" },
+      { title: "Contact Us Form", href: "/contact-us/#form" },
     ],
   },
 ];

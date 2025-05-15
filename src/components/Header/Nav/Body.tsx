@@ -45,7 +45,7 @@ const Body: React.FC<Props> = ({
           <Link
             to={
               cat.title === "Home"
-                ? "/" //
+                ? "/"
                 : `/${cat.title.toLowerCase().replace(/\s+/g, "-")}`
             }
             onClick={onNavigate}
