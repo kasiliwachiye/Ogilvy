@@ -1,54 +1,97 @@
-# React + TypeScript + Vite
+# Future Earth Starter
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A minimal React setup powered by Vite and TypeScript—just clone, install, and go!
 
-Currently, two official plugins are available:
+## 🚀 Prerequisites
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- **Node.js** v14 or higher (we recommend v16+)
+- **npm** (comes with Node) or **Yarn**
 
-## Expanding the ESLint configuration
+## ⚙️ Installation
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+1. **Clone the repo**
 
-```js
-export default tseslint.config({
-  extends: [
-    // Remove ...tseslint.configs.recommended and replace with this
-    ...tseslint.configs.recommendedTypeChecked,
-    // Alternatively, use this for stricter rules
-    ...tseslint.configs.strictTypeChecked,
-    // Optionally, add this for stylistic rules
-    ...tseslint.configs.stylisticTypeChecked,
-  ],
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
+   ```bash
+   git clone https://github.com/kasiliwachiye/Ogilvy.git
+   cd your-repo
+   ```
+
+2. **Install dependencies**
+   ```bash
+   npm install
+   # or
+   yarn
+   ```
+
+## 🔥 Development
+
+Start the Vite dev server with HMR:
+
+```bash
+npm run dev
+# or
+yarn dev
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+Then open your browser at <http://localhost:5173>.
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+## 📦 Production
 
-export default tseslint.config({
-  plugins: {
-    // Add the react-x and react-dom plugins
-    'react-x': reactX,
-    'react-dom': reactDom,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended typescript rules
-    ...reactX.configs['recommended-typescript'].rules,
-    ...reactDom.configs.recommended.rules,
-  },
-})
+**Build** the app:
+
+```bash
+npm run build
+# or
+yarn build
 ```
+
+**Preview** the production build:
+
+```bash
+npm run preview
+# or
+yarn preview
+```
+
+## 📁 Project Structure
+
+```
+├── public/           # Static assets (favicons, robots.txt, etc.)
+├── src/
+│   ├── assets/       # Images, fonts, etc.
+│   ├── components/   # Reusable React components
+│   ├── pages/        # Page-level components (if using file-based routing)
+│   ├── hooks/        # Hooks
+│   ├── data/         # Dummy data
+│   ├── App.tsx       # Main app component
+│   ├── main.tsx      # Entry point, mounts <App />
+│   └── vite-env.d.ts # Vite TypeScript helpers
+├── .gitignore
+├── index.html
+├── package.json
+├── tsconfig.json
+└── vite.config.ts
+```
+
+## 🔧 Environment Variables
+
+Create a `.env` in the root and prefix keys with `VITE_`:
+
+```env
+VITE_API_BASE_URL=https://api.example.com
+VITE_GOOGLE_ANALYTICS_ID=UA-XXXXXX-X
+```
+
+Access in code via `import.meta.env.VITE_API_BASE_URL`.
+
+## 🤝 Contributing
+
+1. Fork it
+2. Create a branch: `git checkout -b feature/YourFeature`
+3. Commit your changes
+4. Push and open a Pull Request
+
+## 📝 License
+
+MIT — see [LICENSE](LICENSE) for details.
+
