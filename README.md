@@ -1,6 +1,6 @@
-# Future Earth Starter
+# Ogilvy Frontend
 
-A minimal React setup powered by Vite and TypeScript—just clone, install, and go!
+A minimal React + Vite + TypeScript setup for the Future Earth project—just clone, install, and go!
 
 ## 🚀 Prerequisites
 
@@ -13,7 +13,7 @@ A minimal React setup powered by Vite and TypeScript—just clone, install, and 
 
    ```bash
    git clone https://github.com/kasiliwachiye/Ogilvy.git
-   cd your-repo
+   cd Ogilvy
    ```
 
 2. **Install dependencies**
