@@ -1,0 +1,38 @@
+[
+  {
+    "id": 1,
+    "name": "Jane Doe",
+    "country": "Kenya",
+    "role": "Lead Designer"
+  },
+  {
+    "id": 2,
+    "name": "John Smith",
+    "country": "Uganda",
+    "role": "Project Manager"
+  },
+  {
+    "id": 3,
+    "name": "Amina Ali",
+    "country": "Tanzania",
+    "role": "Community Liaison"
+  },
+  {
+    "id": 4,
+    "name": "Mark Chen",
+    "country": "Rwanda",
+    "role": "Technical Lead"
+  },
+  {
+    "id": 5,
+    "name": "Fatima Khan",
+    "country": "Somalia",
+    "role": "Marketing Specialist"
+  },
+  {
+    "id": 6,
+    "name": "Samuel Ndlovu",
+    "country": "Zimbabwe",
+    "role": "Data Analyst"
+  }
+]
