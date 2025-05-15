@@ -1,11 +1,13 @@
-import React from 'react'
+import React from "react";
+import Hero from "../components/Shared/Hero";
+import Banner from "../assets/contact-us.jpg";
+import ContactBody from "../components/Contact/ContactBody";
 
-function Contact() {
-  return (
-    <div>
-      
-    </div>
-  )
-}
+const Contact: React.FC = () => (
+  <>
+    <Hero title="Contact Us" imgUrl={Banner} />
+    <ContactBody />
+  </>
+);
 
-export default Contact
+export default Contact;
