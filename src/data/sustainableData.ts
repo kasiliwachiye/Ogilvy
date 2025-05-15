@@ -1,10 +1,10 @@
 import type { ComponentType, SVGProps } from "react";
-import SolarImg from "../assets/solar-power.png";
-import WaterlessToiletsImg from "../assets/waterless-toilets.png";
-import MortgageImg from "../assets/low-cost-mortgage.png";
-import GardenImg from "../assets/garden-to-plant-trees.png";
-import StoveImg from "../assets/clean-efficient-cook-stove.png";
-import InternetImg from "../assets/internet-access-device.png";
+import SolarImg from "../assets/solar-power.jpg";
+import WaterlessToiletsImg from "../assets/waterless-toilets.jpg";
+import MortgageImg from "../assets/low-cost-mortgage.jpg";
+import GardenImg from "../assets/garden-to-plant-trees.jpg";
+import StoveImg from "../assets/clean-efficient-cook-stove.jpg";
+import InternetImg from "../assets/internet-access-device.jpg";
 import Partner1 from "../assets/partner-1.png";
 import Partner2 from "../assets/partner-2.png";
 import Partner3 from "../assets/partner-3.png";

@@ -26,8 +26,8 @@ const menu: Category[] = [
   {
     title: "Sustainable Living",
     links: [
-      { title: "About Sustainable Living", href: "/sustainable-living/about" },
-      { title: "Product Introduction", href: "/sustainable-living/products" },
+      { title: "About Sustainable Living", href: "/sustainable-living/#about-sustainable" },
+      { title: "Product Introduction", href: "/sustainable-living/#product-intro" },
     ],
   },
   {

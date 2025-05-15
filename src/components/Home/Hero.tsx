@@ -5,7 +5,7 @@ import BgImage from "../../assets/hero-bg.png";
 import { slides } from "../../data/homeData";
 import useInterval from "../../hooks/useInterval";
 
-const AUTO_MS = 3000;
+const AUTO_MS = 2000;
 
 const Hero: React.FC = () => {
   const [active, setActive] = useState(0);

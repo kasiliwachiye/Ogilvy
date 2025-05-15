@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { FiArrowLeft, FiArrowRight } from "react-icons/fi";
 import { features } from "../../data/sustainableData";
@@ -9,65 +9,114 @@ const variants = {
   exit: { opacity: 0, y: -20 },
 };
 
+const bottomColors = ["#2d6737", "#235f2b"];
+const activeColor = "#50a501";
+
 const FeatureCarousel: React.FC = () => {
   const [index, setIndex] = useState(0);
   const total = features.length;
-  const prev = () => setIndex((i) => (i - 1 + total) % total);
-  const next = () => setIndex((i) => (i + 1) % total);
+  const timeoutRef = useRef<number | null>(null);
+  const delay = 2000;
+
+  const resetTimeout = () => {
+    if (timeoutRef.current) clearTimeout(timeoutRef.current);
+  };
+
+  useEffect(() => {
+    resetTimeout();
+    timeoutRef.current = setTimeout(
+      () => setIndex((i) => (i + 1) % total),
+      delay
+    );
+    return () => resetTimeout();
+  }, [index, total]);
+
+  const prev = () => {
+    resetTimeout();
+    setIndex((i) => (i - 1 + total) % total);
+  };
+
+  const next = () => {
+    resetTimeout();
+    setIndex((i) => (i + 1) % total);
+  };
+
   const { icon: Icon, title, description, image } = features[index];
 
   return (
-    <section id="features" className="py-16">
-      <div className="container mx-auto max-w-7xl px-4 sm:px-6 lg:px-20">
-        <div className="relative rounded-lg overflow-hidden">
-          <img
-            src={image}
-            alt=""
-            className="w-full h-64 sm:h-96 object-cover"
-          />
-          <div className="absolute inset-0 bg-green-900/50 mix-blend-multiply" />
-          <div className="absolute inset-0 flex flex-col md:flex-row items-center justify-center p-8">
+    <section id="features" className="bg-white py-12">
+      <div className="max-w-[90%] mx-auto overflow-hidden shadow-md">
+        <div
+          className="relative bg-cover bg-center"
+          style={{ backgroundImage: `url(${image})`, minHeight: "30rem" }}
+        >
+          {/* Controls */}
+          <div className="absolute top-4 right-4 flex space-x-2 z-20">
             <button
               onClick={prev}
-              className="text-white text-2xl p-2 rounded-full bg-black/30 hover:bg-black/50"
               aria-label="Previous"
+              className="text-white p-2"
             >
-              <FiArrowLeft />
+              <FiArrowLeft size={20} />
             </button>
-            <AnimatePresence mode="wait">
-              <motion.div
-                key={index}
-                variants={variants}
-                initial="enter"
-                animate="center"
-                exit="exit"
-                className="mx-6 text-center md:text-left text-white max-w-md"
-              >
-                <Icon className="text-4xl sm:text-5xl mb-4 inline-block" />
-                <h3 className="text-2xl sm:text-3xl font-semibold">{title}</h3>
-                <p className="mt-2 text-base sm:text-lg">{description}</p>
-              </motion.div>
-            </AnimatePresence>
-            <button
-              onClick={next}
-              className="text-white text-2xl p-2 rounded-full bg-black/30 hover:bg-black/50"
-              aria-label="Next"
-            >
-              <FiArrowRight />
+            <button onClick={next} aria-label="Next" className="text-white p-2">
+              <FiArrowRight size={20} />
             </button>
           </div>
+
+          <AnimatePresence initial={false} mode="wait">
+            <motion.div
+              key={index}
+              variants={variants}
+              initial="enter"
+              animate="center"
+              exit="exit"
+              className="absolute inset-0 bg-[rgba(16,185,129,0.6)] p-8 flex flex-col justify-between text-white"
+            >
+              <div className="lg:p-12">
+                <Icon className="w-16 h-16 mb-4" />
+                <h2 className="max-w-xs text-4xl font-bold leading-tight mb-4 whitespace-pre-wrap uppercase">
+                  {title}
+                </h2>
+                <p className="max-w-md text-base leading-relaxed font-extralight">
+                  {description}
+                </p>
+              </div>
+              <div className="flex space-x-2 lg:p-12">
+                {features.map((_, idx) => (
+                  <button
+                    key={idx}
+                    onClick={() => setIndex(idx)}
+                    className={`rounded-full cursor-pointer transition ${
+                      idx === index ? "w-4 h-2 bg-white" : "w-2 h-2 bg-white/50"
+                    }`}
+                    title="Select this feature"
+                  />
+                ))}
+              </div>
+            </motion.div>
+          </AnimatePresence>
         </div>
-        <div className="mt-6 flex justify-center gap-3">
-          {features.map((_, i) => (
+
+        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 text-white text-center">
+          {features.map((feat, idx) => (
             <button
-              key={i}
-              onClick={() => setIndex(i)}
-              className={`h-2 w-2 rounded-full transition ${
-                i === index ? "bg-yellow-400" : "bg-white/60"
-              }`}
-              title={`Go to feature ${i + 1}`}
-              aria-label={`Go to feature ${i + 1}`}
-            />
+              key={idx}
+              onClick={() => {
+                resetTimeout();
+                setIndex(idx);
+              }}
+              className="flex flex-col items-center justify-center px-4 py-6 cursor-pointer"
+              style={{
+                backgroundColor:
+                  idx === index ? activeColor : bottomColors[idx % 2],
+              }}
+            >
+              <feat.icon className="w-8 h-8 mb-2 text-white" />
+              <span className="text-xs font-light text-white">
+                {feat.title}
+              </span>
+            </button>
           ))}
         </div>
       </div>
