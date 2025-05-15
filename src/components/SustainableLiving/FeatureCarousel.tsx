@@ -2,6 +2,12 @@ import React, { useState, useEffect, useRef } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { FiArrowLeft, FiArrowRight } from "react-icons/fi";
 import { features } from "../../data/sustainableData";
+import SolarIcon from "../../assets/solar-power.png";
+import ToiletIcon from "../../assets/waterless-toilets.png";
+import MortgageIcon from "../../assets/low-cost-mortgage.png";
+import GardenIcon from "../../assets/garden-to-plant-trees.png";
+import StoveIcon from "../../assets/clean-efficient-cook-stove.png";
+import InternetIcon from "../../assets/internet-access-device.png";
 
 const variants = {
   enter: { opacity: 0, y: 20 },
@@ -11,12 +17,12 @@ const variants = {
 
 const bottomColors = ["#2d6737", "#235f2b"];
 const activeColor = "#50a501";
+const delay = 2000;
 
 const FeatureCarousel: React.FC = () => {
   const [index, setIndex] = useState(0);
   const total = features.length;
   const timeoutRef = useRef<number | null>(null);
-  const delay = 2000;
 
   const resetTimeout = () => {
     if (timeoutRef.current) clearTimeout(timeoutRef.current);
@@ -41,7 +47,15 @@ const FeatureCarousel: React.FC = () => {
     setIndex((i) => (i + 1) % total);
   };
 
-  const { icon: Icon, title, description, image } = features[index];
+  const { title, description, image } = features[index];
+  const iconURLs = [
+    SolarIcon,
+    ToiletIcon,
+    MortgageIcon,
+    GardenIcon,
+    StoveIcon,
+    InternetIcon,
+  ];
 
   return (
     <section id="features" className="bg-white py-12">
@@ -50,16 +64,19 @@ const FeatureCarousel: React.FC = () => {
           className="relative bg-cover bg-center"
           style={{ backgroundImage: `url(${image})`, minHeight: "30rem" }}
         >
-          {/* Controls */}
           <div className="absolute top-4 right-4 flex space-x-2 z-20">
             <button
               onClick={prev}
               aria-label="Previous"
-              className="text-white p-2"
+              className="text-white p-2 cursor-pointer"
             >
               <FiArrowLeft size={20} />
             </button>
-            <button onClick={next} aria-label="Next" className="text-white p-2">
+            <button
+              onClick={next}
+              aria-label="Next"
+              className="text-white p-2 cursor-pointer"
+            >
               <FiArrowRight size={20} />
             </button>
           </div>
@@ -74,7 +91,11 @@ const FeatureCarousel: React.FC = () => {
               className="absolute inset-0 bg-[rgba(16,185,129,0.6)] p-8 flex flex-col justify-between text-white"
             >
               <div className="lg:p-12">
-                <Icon className="w-16 h-16 mb-4" />
+                <img
+                  src={iconURLs[index]}
+                  alt={title}
+                  className="w-16 h-16 mb-4"
+                />
                 <h2 className="max-w-xs text-4xl font-bold leading-tight mb-4 whitespace-pre-wrap uppercase">
                   {title}
                 </h2>
@@ -112,7 +133,11 @@ const FeatureCarousel: React.FC = () => {
                   idx === index ? activeColor : bottomColors[idx % 2],
               }}
             >
-              <feat.icon className="w-8 h-8 mb-2 text-white" />
+              <img
+                src={iconURLs[idx]}
+                alt={feat.title}
+                className="w-8 h-8 mb-2"
+              />
               <span className="text-xs font-light text-white">
                 {feat.title}
               </span>
