@@ -88,7 +88,7 @@ const FeatureCarousel: React.FC = () => {
               initial="enter"
               animate="center"
               exit="exit"
-              className="absolute inset-0 bg-[rgba(16,185,129,0.6)] p-8 flex flex-col justify-between text-white"
+              className="absolute inset-0 bg-gradient-to-r from-[#235f2b]/80 to-transparent p-8 flex flex-col justify-between text-white"
             >
               <div className="lg:p-12">
                 <img
