@@ -30,7 +30,7 @@ const FeatureCarousel: React.FC = () => {
 
   useEffect(() => {
     resetTimeout();
-    timeoutRef.current = setTimeout(
+    timeoutRef.current = window.setTimeout(
       () => setIndex((i) => (i + 1) % total),
       delay
     );
@@ -119,7 +119,7 @@ const FeatureCarousel: React.FC = () => {
           </AnimatePresence>
         </div>
 
-        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 text-white text-center">
+        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 text-center">
           {features.map((feat, idx) => (
             <button
               key={idx}
@@ -130,7 +130,9 @@ const FeatureCarousel: React.FC = () => {
               className="flex flex-col items-center justify-center px-4 py-6 cursor-pointer"
               style={{
                 backgroundColor:
-                  idx === index ? activeColor : bottomColors[idx % 2],
+                  idx === index
+                    ? activeColor
+                    : bottomColors[idx % bottomColors.length],
               }}
             >
               <img
